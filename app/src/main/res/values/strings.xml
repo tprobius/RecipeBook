@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RecipeBook</string>
+    <string name="content_description">content_description</string>
+    <string name="error_massage">Something went wrong.\nPlease try again later.</string>
 </resources>
