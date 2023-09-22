@@ -106,16 +106,19 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/recipeInfo_cardView"
             android:layout_width="0dp"
-            android:layout_height="154dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottomAppBar_linearLayout"
+            app:layout_constraintBottom_toTopOf="@id/recipeName_textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout">
+            app:layout_constraintTop_toBottomOf="@id/topAppBar_linearLayout"
+
+
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -124,7 +127,8 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/time_chip"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
                     android:text="@{recipeItem.time}"
                     app:chipIcon="@drawable/ic_time"
                     app:layout_constraintBottom_toTopOf="@+id/proteins_imageView"
@@ -138,6 +142,7 @@
                     android:id="@+id/difficulty_chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="EaSy"
                     app:chipIcon="@drawable/ic_chef"
                     app:layout_constraintBottom_toTopOf="@+id/fats_imageView"
@@ -152,6 +157,7 @@
                     android:id="@+id/calories_chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="@{recipeItem.calories}"
                     app:chipIcon="@drawable/ic_calories"
                     app:layout_constraintBottom_toTopOf="@+id/carbs_imageView"
@@ -165,6 +171,7 @@
                     android:id="@+id/proteins_imageView"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/ellipse_1"
                     android:contentDescription="@string/content_description"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -178,6 +185,7 @@
                     android:id="@+id/fats_imageView"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/ellipse_1"
                     android:contentDescription="@string/content_description"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -190,6 +198,7 @@
                     android:id="@+id/carbs_imageView"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/ellipse_1"
                     android:contentDescription="@string/content_description"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -250,7 +259,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recipeInfo_cardView"
+            app:layout_constraintTop_toBottomOf="@+id/recipeImage_imageView"
             tools:text="Moroccan Skirt Steak" />
 
         <TextView
@@ -258,7 +267,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="@{recipeItem.headline}"
             android:textAlignment="center"
@@ -269,13 +278,11 @@
             tools:text="with Spinach and Lemon Couscous" />
 
         <ScrollView
+            android:id="@+id/description_scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@id/bottomAppBar_linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recipeHeadline_textView">
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomAppBar_linearLayout">
 
             <TextView
                 android:id="@+id/textView6"
