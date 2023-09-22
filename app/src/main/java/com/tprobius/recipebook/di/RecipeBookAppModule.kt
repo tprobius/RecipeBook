@@ -4,6 +4,7 @@ import com.tprobius.recipebook.data.api.RecipeBookApi
 import com.tprobius.recipebook.data.api.RecipeBookApi.Companion.BASE_URL
 import com.tprobius.recipebook.data.repository.RecipeBookApiRepository
 import com.tprobius.recipebook.data.repository.RecipeBookApiRepositoryImpl
+import com.tprobius.recipebook.presentation.recipedetails.RecipeDetailsViewModel
 import com.tprobius.recipebook.presentation.recipelist.RecipeListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,6 +21,7 @@ val netModule = module {
 
 val viewModelModule = module {
     viewModel { RecipeListViewModel(get()) }
+    viewModel { RecipeDetailsViewModel() }
 }
 
 private fun provideRecipeBookApiRetrofit(): Retrofit.Builder {

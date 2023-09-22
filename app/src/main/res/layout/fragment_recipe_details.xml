@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="recipeItem"
+            type="com.tprobius.recipebook.data.entites.RecipeListItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.recipelist.RecipeListFragment">
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/bottomAppBar_linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout" />
+
+        <ImageView
+            android:id="@+id/error_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/content_description"
+            android:src="@drawable/icons8_plate_96"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/error_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/error_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:lineSpacingExtra="4sp"
+            android:text="@string/error_massage"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/bottomAppBar_linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/error_imageView" />
+
+        <LinearLayout
+            android:id="@+id/topAppBar_linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/back_imageView"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:contentDescription="@string/content_description"
+                app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+
+            <TextView
+                android:id="@+id/title_textView"
+                android:layout_width="308dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="24dp"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/recipeImage_imageView"
+            android:layout_width="412dp"
+            android:layout_height="273dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/content_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/recipeInfo_cardView"
+            android:layout_width="0dp"
+            android:layout_height="154dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomAppBar_linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/time_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{recipeItem.time}"
+                    app:chipIcon="@drawable/ic_time"
+                    app:layout_constraintBottom_toTopOf="@+id/proteins_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/proteins_imageView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/proteins_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="35 min" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/difficulty_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EaSy"
+                    app:chipIcon="@drawable/ic_chef"
+                    app:layout_constraintBottom_toTopOf="@+id/fats_imageView"
+                    app:layout_constraintEnd_toStartOf="@+id/calories_chip"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/time_chip"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="spread"
+                    tools:text="Easy" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/calories_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{recipeItem.calories}"
+                    app:chipIcon="@drawable/ic_calories"
+                    app:layout_constraintBottom_toTopOf="@+id/carbs_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/carbs_imageView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/carbs_imageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="397 kcal" />
+
+                <ImageView
+                    android:id="@+id/proteins_imageView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/ellipse_1"
+                    android:contentDescription="@string/content_description"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/fats_imageView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/time_chip"
+                    tools:text="397 kcal" />
+
+                <ImageView
+                    android:id="@+id/fats_imageView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/ellipse_1"
+                    android:contentDescription="@string/content_description"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/carbs_imageView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/proteins_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/difficulty_chip" />
+
+                <ImageView
+                    android:id="@+id/carbs_imageView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/ellipse_1"
+                    android:contentDescription="@string/content_description"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/fats_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/calories_chip" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{recipeItem.proteins + `\nProteins`}"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/proteins_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/proteins_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/proteins_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/proteins_imageView"
+                    tools:text="31 g \nProteins" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{recipeItem.fats + `\nFats`}"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/fats_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/fats_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/fats_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/fats_imageView"
+                    tools:text="5 g \nFats" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{recipeItem.carbons + `\nCarbs`}"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/carbs_imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/carbs_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/carbs_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/carbs_imageView"
+                    tools:text="26 g \nCarbs" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/recipeName_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{recipeItem.name}"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipeInfo_cardView"
+            tools:text="Moroccan Skirt Steak" />
+
+        <TextView
+            android:id="@+id/recipeHeadline_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{recipeItem.headline}"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipeName_textView"
+            tools:text="with Spinach and Lemon Couscous" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@id/bottomAppBar_linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipeHeadline_textView">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:lineSpacingExtra="4sp"
+                android:text="@{recipeItem.description}"
+                android:textSize="16sp"
+                tools:text="Close your eyes, open up your Ras El Hanout and inhale deeply. You are no longer standing in your kitchen. Around you are the sounds of a bustling market. Robed men sell ornate carpets and a camel nibbles affectionately at your ear.  OK, we\u2019re pretty sure Paul McKenna\u2019s job is safe for now, but get cooking this recipe and take dinnertime on a magic carpet ride to Casablanca! Our tip for this recipe is to take your meat out of the fridge at least 30 minutes before dinner which will allow you to cook it more evenly." />
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/bottomAppBar_linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/content_description"
+                android:src="@drawable/ic_home" />
+
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/content_description"
+                android:src="@drawable/ic_add" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/content_description"
+                android:src="@drawable/ic_favourite" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
+
+    <!--    android:text="@{recipeItem.difficulty == 0||1 ? `Easy` : (recipeItem.difficulty == 2 ? `Medium` : `Hard`)}"-->

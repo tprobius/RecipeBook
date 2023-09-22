@@ -24,9 +24,12 @@ class RecipeListViewModel(
             lateinit var recipeList: Response<List<RecipeListItem>>
 
             _state.value = RecipeListState.Loading
-
             try {
                 recipeList = recipeBookApiRepository.getRecipeList()
+//                when(recipeList.isSuccessful) {
+//                    true -> recipeList.body()?.let { RecipeListState.Success(it) }
+//                    else ->_state.value = RecipeListState.Error
+//                }
                 if (recipeList.isSuccessful) {
                     _state.value = recipeList.body()?.let { RecipeListState.Success(it) }
                 } else {
