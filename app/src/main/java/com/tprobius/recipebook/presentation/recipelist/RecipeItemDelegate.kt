@@ -16,14 +16,14 @@ fun recipeItemDelegate(onRecipeClick: (RecipeListItem) -> Unit) =
     ) {
         bind {
             binding.recipeListItem = item
-            binding.imageImageView
-            binding.recipeListItemCardView.setOnClickListener {
+            binding.imageView
+            binding.cardView.setOnClickListener {
                 onRecipeClick(item)
             }
 
-            Glide.with(binding.imageImageView)
-                .load(item.thumb)
+            Glide.with(binding.imageView)
+                .load(item.image)
                 .transform(MultiTransformation(FillSpace(), RoundedCorners(8)))
-                .into(binding.imageImageView)
+                .into(binding.imageView)
         }
     }
