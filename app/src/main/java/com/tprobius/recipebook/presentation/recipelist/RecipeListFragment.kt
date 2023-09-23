@@ -8,8 +8,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
+import com.tprobius.recipebook.R
 import com.tprobius.recipebook.data.entites.RecipeListItem
 import com.tprobius.recipebook.databinding.FragmentRecipeListBinding
+import com.tprobius.recipebook.presentation.recipedetails.RecipeDetailsFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,6 +23,7 @@ class RecipeListFragment : Fragment() {
     private val viewModel: RecipeListViewModel by viewModel()
 
     private lateinit var recipeListAdapter: ListDelegationAdapter<List<ListItem>>
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,8 +58,18 @@ class RecipeListFragment : Fragment() {
     }
 
     private fun setRecipeListAdapter() {
-        recipeListAdapter = ListDelegationAdapter(recipeItemDelegate())
+        recipeListAdapter = ListDelegationAdapter(recipeItemDelegate {
+            navigateToContactDetailFragment(it)
+        })
         binding.recipeListRecyclerView.adapter = recipeListAdapter
+    }
+
+    private fun navigateToContactDetailFragment(recipeListItem: RecipeListItem) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.activity_main, RecipeDetailsFragment.newInstance(recipeListItem))
+            .setReorderingAllowed(true)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun showInitialState() {
