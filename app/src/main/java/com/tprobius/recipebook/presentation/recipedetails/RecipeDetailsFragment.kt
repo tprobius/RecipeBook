@@ -1,10 +1,10 @@
 package com.tprobius.recipebook.presentation.recipedetails
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -21,11 +21,10 @@ class RecipeDetailsFragment : Fragment() {
 
     private val viewModel: RecipeDetailsViewModel by viewModel()
 
-    private lateinit var recipeItem: RecipeListItem
+    private var recipeItem: RecipeListItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
             recipeItem = it.recipe as RecipeListItem
         }
@@ -44,7 +43,6 @@ class RecipeDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
         viewModel.getRecipeDetails(recipeItem)
-
         setRecipeItem()
         setHandleState()
     }
@@ -53,7 +51,7 @@ class RecipeDetailsFragment : Fragment() {
         when (state) {
             RecipeDetailsState.Initial -> showInitialState()
             RecipeDetailsState.Loading -> showLoadingState()
-            is RecipeDetailsState.Success -> showSuccessState(state.recipeItem)
+            is RecipeDetailsState.Success -> showSuccessState()
             RecipeDetailsState.Error -> showErrorState()
         }
     }
@@ -61,7 +59,7 @@ class RecipeDetailsFragment : Fragment() {
     private fun setRecipeItem() {
         binding.recipeItem = recipeItem
         Glide.with(binding.recipeImageImageView)
-            .load(recipeItem.image)
+            .load(recipeItem?.image)
             .transform(MultiTransformation(FillSpace(), RoundedCorners(8)))
             .into(binding.recipeImageImageView)
     }
@@ -73,19 +71,47 @@ class RecipeDetailsFragment : Fragment() {
     }
 
     private fun showInitialState() {
-
+        binding.progressBar.isVisible = false
+        binding.errorImageView.isVisible = false
+        binding.errorTextView.isVisible = false
+        binding.recipeImageImageView.isVisible = false
+        binding.recipeInfoCardView.isVisible = false
+        binding.recipeNameTextView.isVisible = false
+        binding.recipeHeadlineTextView.isVisible = false
+        binding.descriptionScrollView.isVisible = false
     }
 
     private fun showLoadingState() {
-
+        binding.progressBar.isVisible = true
+        binding.errorImageView.isVisible = false
+        binding.errorTextView.isVisible = false
+        binding.recipeImageImageView.isVisible = false
+        binding.recipeInfoCardView.isVisible = false
+        binding.recipeNameTextView.isVisible = false
+        binding.recipeHeadlineTextView.isVisible = false
+        binding.descriptionScrollView.isVisible = false
     }
 
-    private fun showSuccessState(recipeItem: RecipeListItem) {
-
+    private fun showSuccessState() {
+        binding.progressBar.isVisible = false
+        binding.errorImageView.isVisible = false
+        binding.errorTextView.isVisible = false
+        binding.recipeImageImageView.isVisible = true
+        binding.recipeInfoCardView.isVisible = true
+        binding.recipeNameTextView.isVisible = true
+        binding.recipeHeadlineTextView.isVisible = true
+        binding.descriptionScrollView.isVisible = true
     }
 
     private fun showErrorState() {
-
+        binding.progressBar.isVisible = false
+        binding.errorImageView.isVisible = true
+        binding.errorTextView.isVisible = true
+        binding.recipeImageImageView.isVisible = false
+        binding.recipeInfoCardView.isVisible = false
+        binding.recipeNameTextView.isVisible = false
+        binding.recipeHeadlineTextView.isVisible = false
+        binding.descriptionScrollView.isVisible = false
     }
 
     override fun onDestroy() {
@@ -96,39 +122,12 @@ class RecipeDetailsFragment : Fragment() {
     companion object {
         private const val RECIPE_KEY = "recipe_key"
 
-//        private var Bundle.recipeName
-//            get() = getString(RECIPE_KEY)
-//            set(value) = putString(RECIPE_KEY, value)
-
-
-        var Bundle.recipe
+        private var Bundle.recipe
             get() = getSerializable(RECIPE_KEY)
             set(value) = putSerializable(RECIPE_KEY, value)
 
         fun newInstance(recipeItem: RecipeListItem) = RecipeDetailsFragment().apply {
-            arguments = Bundle().apply {
-                this.recipe = recipeItem
-                Log.d("WTF?!?!?!?!?!?!", "${this.recipe}")
-            }
+            arguments = Bundle().apply { this.recipe = recipeItem }
         }
-
-//        fun newInstance(hotelName: String) = RecipeDetailsFragment().apply {
-//            arguments = Bundle().apply { this.hotelName = hotelName }
-//        }
-
-
-////
-//        private val DESCRIBABLE_KEY = "describable_key"
-//        private var mDescribable: Describable? = null
-//
-//        fun newInstance(recipeItem: RecipeListItem): RecipeDetailsFragment {
-//            val fragment = RecipeDetailsFragment()
-//            val bundle = Bundle()
-//            bundle.putSerializable(RECIPE_KEY, recipeItem)
-//            fragment.arguments = bundle
-//            return fragment
-//        }
-
-
     }
 }
