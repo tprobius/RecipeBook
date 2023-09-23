@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
-                        android:text="@{recipeListItem.calories}"
+                        android:text="@{recipeListItem.calories.length() == 0 ? ` — ` : recipeListItem.calories}"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView8"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -163,6 +163,16 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/gray_transparent"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textView4" />
+
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="0dp"
@@ -192,6 +202,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="with Spinach and Lemon Couscous" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

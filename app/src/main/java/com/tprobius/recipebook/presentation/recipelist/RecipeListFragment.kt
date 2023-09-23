@@ -37,7 +37,6 @@ class RecipeListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
         viewModel.getRecipeList()
-
         setHandleState()
         setRecipeListAdapter()
     }
