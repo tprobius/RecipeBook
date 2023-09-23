@@ -97,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="EaSy"
+                        android:text="@{recipeListItem.difficulty == 3 ? `Hard` : (recipeListItem.difficulty == 2 ? `Medium` : `Easy`)}"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                         app:layout_constraintEnd_toStartOf="@+id/divider4"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -170,8 +170,10 @@
                 android:background="@color/white_transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/textView4" />
+                app:layout_constraintTop_toTopOf="@id/textView4"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -203,6 +205,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="with Spinach and Lemon Couscous" />
 
+            <ImageView
+                android:id="@+id/favourite_imageView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/content_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_favourite" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

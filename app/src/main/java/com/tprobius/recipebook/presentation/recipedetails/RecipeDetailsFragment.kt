@@ -1,16 +1,20 @@
 package com.tprobius.recipebook.presentation.recipedetails
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.tprobius.recipebook.R
 import com.tprobius.recipebook.data.entites.RecipeListItem
 import com.tprobius.recipebook.databinding.FragmentRecipeDetailsBinding
+import com.tprobius.recipebook.presentation.recipelist.RecipeListFragment
 import com.tprobius.recipebook.utils.FillSpace
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,12 +43,29 @@ class RecipeDetailsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                navigateToRecipeListFragment()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
+    private fun navigateToRecipeListFragment() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.activity_main, RecipeListFragment())
+            .setReorderingAllowed(true)
+            .commit()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
         viewModel.getRecipeDetails(recipeItem)
-        setRecipeItem()
         setHandleState()
+        setOnBackClick()
     }
 
     private fun handleState(state: RecipeDetailsState) {
@@ -56,13 +77,6 @@ class RecipeDetailsFragment : Fragment() {
         }
     }
 
-    private fun setRecipeItem() {
-        binding.recipeItem = recipeItem
-        Glide.with(binding.recipeImageImageView)
-            .load(recipeItem?.image)
-            .transform(MultiTransformation(FillSpace(), RoundedCorners(8)))
-            .into(binding.recipeImageImageView)
-    }
 
     private fun setHandleState() {
         viewModel.state.observe(viewLifecycleOwner) {
@@ -93,6 +107,7 @@ class RecipeDetailsFragment : Fragment() {
     }
 
     private fun showSuccessState() {
+        setRecipeItem()
         binding.progressBar.isVisible = false
         binding.errorImageView.isVisible = false
         binding.errorTextView.isVisible = false
@@ -101,6 +116,14 @@ class RecipeDetailsFragment : Fragment() {
         binding.recipeNameTextView.isVisible = true
         binding.recipeHeadlineTextView.isVisible = true
         binding.descriptionScrollView.isVisible = true
+    }
+
+    private fun setRecipeItem() {
+        binding.recipeItem = recipeItem
+        Glide.with(binding.recipeImageImageView)
+            .load(recipeItem?.image)
+            .transform(MultiTransformation(FillSpace(), RoundedCorners(8)))
+            .into(binding.recipeImageImageView)
     }
 
     private fun showErrorState() {
@@ -112,6 +135,12 @@ class RecipeDetailsFragment : Fragment() {
         binding.recipeNameTextView.isVisible = false
         binding.recipeHeadlineTextView.isVisible = false
         binding.descriptionScrollView.isVisible = false
+    }
+
+    private fun setOnBackClick() {
+        binding.backImageView.setOnClickListener {
+            navigateToRecipeListFragment()
+        }
     }
 
     override fun onDestroy() {

@@ -144,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:clickable="false"
-                    android:text="EaSy"
+                    android:text="@{recipeItem.difficulty == 3 ? `Hard` : (recipeItem.difficulty == 2 ? `Medium` : `Easy`)}"
                     app:chipIcon="@drawable/ic_chef"
                     app:chipStrokeWidth="0dp"
                     app:layout_constraintBottom_toTopOf="@+id/fats_imageView"
@@ -175,7 +175,7 @@
                     android:id="@+id/proteins_imageView"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="12dp"
                     android:background="@drawable/ellipse_1"
                     android:contentDescription="@string/content_description"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -350,7 +350,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/content_description"
-                android:src="@drawable/ic_favourite" />
+                android:src="@drawable/ic_favourite_dark" />
 
         </LinearLayout>
 
