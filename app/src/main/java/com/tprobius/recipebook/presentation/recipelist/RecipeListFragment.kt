@@ -58,16 +58,15 @@ class RecipeListFragment : Fragment() {
 
     private fun setRecipeListAdapter() {
         recipeListAdapter = ListDelegationAdapter(recipeItemDelegate {
-            navigateToContactDetailFragment(it)
+            navigateToRecipeDetailsFragment(it)
         })
         binding.recipeListRecyclerView.adapter = recipeListAdapter
     }
 
-    private fun navigateToContactDetailFragment(recipeListItem: RecipeListItem) {
+    private fun navigateToRecipeDetailsFragment(recipeListItem: RecipeListItem) {
         parentFragmentManager.beginTransaction()
             .replace(R.id.activity_main, RecipeDetailsFragment.newInstance(recipeListItem))
             .setReorderingAllowed(true)
-            .addToBackStack(null)
             .commit()
     }
 
