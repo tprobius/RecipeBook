@@ -144,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:clickable="false"
-                    android:text="EaSy"
+                    android:text="@{recipeItem.difficulty == 3 ? `Hard` : (recipeItem.difficulty == 2 ? `Medium` : `Easy`)}"
                     app:chipIcon="@drawable/ic_chef"
                     app:chipStrokeWidth="0dp"
                     app:layout_constraintBottom_toTopOf="@+id/fats_imageView"
