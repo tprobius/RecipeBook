@@ -19,7 +19,7 @@ class RecipeDetailsViewModel : ViewModel() {
         viewModelScope.launch {
             _state.value = RecipeDetailsState.Loading
             if (recipeItem != null) {
-                _state.value = RecipeDetailsState.Success(recipeItem)
+                _state.value = RecipeDetailsState.Success
             } else {
                 _state.value = RecipeDetailsState.Error
 
