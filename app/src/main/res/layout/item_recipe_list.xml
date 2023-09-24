@@ -7,7 +7,7 @@
 
         <variable
             name="recipeListItem"
-            type="com.tprobius.recipebook.data.entites.RecipeListItem" />
+            type="com.tprobius.recipebook.domain.entities.RecipeItem" />
     </data>
 
     <androidx.cardview.widget.CardView

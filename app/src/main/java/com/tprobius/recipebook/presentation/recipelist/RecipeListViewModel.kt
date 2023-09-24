@@ -4,13 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tprobius.recipebook.data.entites.RecipeListItem
-import com.tprobius.recipebook.data.repository.RecipeBookApiRepository
+import com.tprobius.recipebook.domain.usecases.GetRecipeListUseCase
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class RecipeListViewModel(
-    private val recipeBookApiRepository: RecipeBookApiRepository
+    private val getRecipeListUseCase: GetRecipeListUseCase
 ) : ViewModel() {
     private var _state: MutableLiveData<RecipeListState> = MutableLiveData()
     val state: LiveData<RecipeListState> = _state
@@ -21,22 +20,18 @@ class RecipeListViewModel(
 
     fun getRecipeList() {
         viewModelScope.launch {
-            lateinit var recipeList: Response<List<RecipeListItem>>
-
             _state.value = RecipeListState.Loading
             try {
-                recipeList = recipeBookApiRepository.getRecipeList()
-//                when(recipeList.isSuccessful) {
-//                    true -> recipeList.body()?.let { RecipeListState.Success(it) }
-//                    else ->_state.value = RecipeListState.Error
-//                }
-                if (recipeList.isSuccessful) {
-                    _state.value = recipeList.body()?.let { RecipeListState.Success(it) }
-                } else {
-                    _state.value = RecipeListState.Error
+                getRecipeListUseCase().let {
+                    if (it.first().isEmpty()) {
+                        _state.postValue(RecipeListState.Error)
+
+                    } else {
+                        _state.postValue(RecipeListState.Success(it.first()))
+                    }
                 }
             } catch (e: Exception) {
-                _state.value = RecipeListState.Error
+                _state.postValue(RecipeListState.Error)
             }
         }
     }

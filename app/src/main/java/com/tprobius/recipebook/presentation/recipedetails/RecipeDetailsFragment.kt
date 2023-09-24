@@ -12,8 +12,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.tprobius.recipebook.R
-import com.tprobius.recipebook.data.entites.RecipeListItem
 import com.tprobius.recipebook.databinding.FragmentRecipeDetailsBinding
+import com.tprobius.recipebook.domain.entities.RecipeItem
 import com.tprobius.recipebook.presentation.recipelist.RecipeListFragment
 import com.tprobius.recipebook.utils.FillSpace
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,12 +25,12 @@ class RecipeDetailsFragment : Fragment() {
 
     private val viewModel: RecipeDetailsViewModel by viewModel()
 
-    private var recipeItem: RecipeListItem? = null
+    private var recipeItem: RecipeItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            recipeItem = it.recipe as RecipeListItem
+            recipeItem = it.recipe as RecipeItem
         }
     }
 
@@ -155,7 +155,7 @@ class RecipeDetailsFragment : Fragment() {
             get() = getSerializable(RECIPE_KEY)
             set(value) = putSerializable(RECIPE_KEY, value)
 
-        fun newInstance(recipeItem: RecipeListItem) = RecipeDetailsFragment().apply {
+        fun newInstance(recipeItem: RecipeItem) = RecipeDetailsFragment().apply {
             arguments = Bundle().apply { this.recipe = recipeItem }
         }
     }
