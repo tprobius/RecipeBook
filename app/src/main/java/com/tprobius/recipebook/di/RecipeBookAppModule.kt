@@ -32,7 +32,7 @@ val databaseModule = module {
 }
 
 val useCasesModule = module {
-    single { GetRecipeListUseCase(apiRepository = get(), databaseRepository = get()) }
+    single { GetRecipeListUseCase(app = get(), apiRepository = get(), databaseRepository = get()) }
 }
 
 val viewModelModule = module {

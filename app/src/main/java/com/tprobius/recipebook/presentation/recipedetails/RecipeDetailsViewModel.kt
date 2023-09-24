@@ -22,7 +22,6 @@ class RecipeDetailsViewModel : ViewModel() {
                 _state.value = RecipeDetailsState.Success
             } else {
                 _state.value = RecipeDetailsState.Error
-
             }
         }
     }
