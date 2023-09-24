@@ -5,6 +5,7 @@ import com.tprobius.recipebook.di.apiModule
 import com.tprobius.recipebook.di.databaseModule
 import com.tprobius.recipebook.di.useCasesModule
 import com.tprobius.recipebook.di.viewModelModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class RecipeBookApp : Application() {
@@ -12,6 +13,7 @@ class RecipeBookApp : Application() {
         super.onCreate()
 
         startKoin {
+            androidContext(this@RecipeBookApp)
             modules(
                 apiModule,
                 databaseModule,
