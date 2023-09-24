@@ -38,7 +38,7 @@ val useCasesModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { RecipeListViewModel(getRecipeListUseCase = get(), addNewRecipeUseCase = get()) }
+    viewModel { RecipeListViewModel(getRecipeListUseCase = get()) }
     viewModel { RecipeDetailsViewModel() }
 }
 
