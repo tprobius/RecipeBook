@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.tprobius.recipebook.R
-import com.tprobius.recipebook.data.entites.RecipeListItem
 import com.tprobius.recipebook.databinding.FragmentRecipeListBinding
+import com.tprobius.recipebook.domain.entities.ListItem
+import com.tprobius.recipebook.domain.entities.RecipeItem
 import com.tprobius.recipebook.presentation.recipedetails.RecipeDetailsFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -63,7 +64,7 @@ class RecipeListFragment : Fragment() {
         binding.recipeListRecyclerView.adapter = recipeListAdapter
     }
 
-    private fun navigateToRecipeDetailsFragment(recipeListItem: RecipeListItem) {
+    private fun navigateToRecipeDetailsFragment(recipeListItem: RecipeItem) {
         parentFragmentManager.beginTransaction()
             .replace(R.id.activity_main, RecipeDetailsFragment.newInstance(recipeListItem))
             .setReorderingAllowed(true)
@@ -84,7 +85,7 @@ class RecipeListFragment : Fragment() {
         binding.errorTextView.isVisible = false
     }
 
-    private fun showSuccessState(recipeList: List<RecipeListItem>) {
+    private fun showSuccessState(recipeList: List<RecipeItem>) {
         binding.progressBar.isVisible = false
         binding.recipeListRecyclerView.isVisible = true
         binding.errorImageView.isVisible = false

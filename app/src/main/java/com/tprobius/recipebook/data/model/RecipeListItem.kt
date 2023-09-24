@@ -1,8 +1,6 @@
-package com.tprobius.recipebook.data.entites
+package com.tprobius.recipebook.data.model
 
 import com.google.gson.annotations.SerializedName
-import com.tprobius.recipebook.presentation.recipelist.ListItem
-import java.io.Serializable
 
 data class RecipeListItem(
     @SerializedName("id")
@@ -31,4 +29,4 @@ data class RecipeListItem(
     val image: String?,
     @SerializedName("thumb")
     val thumb: String?
-) : ListItem, Serializable
+)

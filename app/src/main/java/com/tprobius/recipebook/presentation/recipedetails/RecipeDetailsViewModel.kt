@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tprobius.recipebook.data.entites.RecipeListItem
+import com.tprobius.recipebook.domain.entities.RecipeItem
 import kotlinx.coroutines.launch
 
 class RecipeDetailsViewModel : ViewModel() {
@@ -15,7 +15,7 @@ class RecipeDetailsViewModel : ViewModel() {
         _state.value = RecipeDetailsState.Initial
     }
 
-    fun getRecipeDetails(recipeItem: RecipeListItem?) {
+    fun getRecipeDetails(recipeItem: RecipeItem?) {
         viewModelScope.launch {
             _state.value = RecipeDetailsState.Loading
             if (recipeItem != null) {
