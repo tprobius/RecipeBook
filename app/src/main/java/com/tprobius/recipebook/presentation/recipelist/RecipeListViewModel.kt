@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tprobius.recipebook.domain.usecases.AddNewRecipeUseCase
 import com.tprobius.recipebook.domain.usecases.GetRecipeListUseCase
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
@@ -13,7 +14,8 @@ import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 
 class RecipeListViewModel(
-    private val getRecipeListUseCase: GetRecipeListUseCase
+    private val getRecipeListUseCase: GetRecipeListUseCase,
+    private val addNewRecipeUseCase: AddNewRecipeUseCase
 ) : ViewModel() {
     private var _state: MutableLiveData<RecipeListState> = MutableLiveData()
     val state: LiveData<RecipeListState> = _state
@@ -30,7 +32,7 @@ class RecipeListViewModel(
                     _state.postValue(RecipeListState.Success(it.flattenToList()))
                 }
             } catch (e: Exception) {
-                _state.postValue(RecipeListState.Error)
+//                _state.postValue(RecipeListState.Error)
             }
         }
     }

@@ -9,6 +9,7 @@ import com.tprobius.recipebook.data.repository.RecipeBookApiRepositoryImpl
 import com.tprobius.recipebook.data.repository.RecipeBookDatabaseRepositoryImpl
 import com.tprobius.recipebook.domain.repository.RecipeBookApiRepository
 import com.tprobius.recipebook.domain.repository.RecipeBookDatabaseRepository
+import com.tprobius.recipebook.domain.usecases.AddNewRecipeUseCase
 import com.tprobius.recipebook.domain.usecases.GetRecipeListUseCase
 import com.tprobius.recipebook.presentation.recipedetails.RecipeDetailsViewModel
 import com.tprobius.recipebook.presentation.recipelist.RecipeListViewModel
@@ -33,10 +34,11 @@ val databaseModule = module {
 
 val useCasesModule = module {
     single { GetRecipeListUseCase(app = get(), apiRepository = get(), databaseRepository = get()) }
+    single { AddNewRecipeUseCase(databaseRepository = get()) }
 }
 
 val viewModelModule = module {
-    viewModel { RecipeListViewModel(getRecipeListUseCase = get()) }
+    viewModel { RecipeListViewModel(getRecipeListUseCase = get(), addNewRecipeUseCase = get()) }
     viewModel { RecipeDetailsViewModel() }
 }
 
