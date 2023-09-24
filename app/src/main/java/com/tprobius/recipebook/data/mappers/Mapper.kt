@@ -4,7 +4,7 @@ import com.tprobius.recipebook.data.model.RecipeListItem
 import com.tprobius.recipebook.domain.entities.RecipeItem
 
 fun RecipeListItem.toRecipeItem() = RecipeItem(
-    idLocal = 0,
+    idLocal = id.hashCode(),
     idRemote = id,
     name = name,
     headline = headline,
