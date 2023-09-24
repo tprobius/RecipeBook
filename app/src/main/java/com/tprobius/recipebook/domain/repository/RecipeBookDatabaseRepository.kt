@@ -9,4 +9,6 @@ interface RecipeBookDatabaseRepository {
     suspend fun addRecipeList(recipeList: List<RecipeItem>)
 
     suspend fun getRecipeList(): Flow<List<RecipeItem>>
+
+    suspend fun deleteRecipeList()
 }

@@ -17,4 +17,7 @@ interface RecipeBookDao {
 
     @Query("SELECT * FROM recipes")
     fun getRecipeList(): Flow<List<RecipeItem>>
+
+    @Query("DELETE FROM recipes")
+    fun deleteRecipeList()
 }

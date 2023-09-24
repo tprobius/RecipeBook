@@ -9,13 +9,9 @@ import com.tprobius.recipebook.domain.repository.RecipeBookDatabaseRepository
 import com.tprobius.recipebook.utils.hasInternetConnection
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.toList
 
 class GetRecipeListUseCase(
     app: Application,
@@ -29,17 +25,17 @@ class GetRecipeListUseCase(
 
     suspend operator fun invoke(): Flow<List<RecipeItem>> {
         return if (hasInternetConnection(connectivityManager)) {
+            databaseRepository.deleteRecipeList()
             val result: Flow<List<RecipeItem>> =
                 apiRepository.getRecipeList()
                     .onEach { news -> databaseRepository.addRecipeList(news) }
                     .flowOn(defaultDispatcher)
             result
         } else {
-            databaseRepository.getRecipeList()
+            val result: Flow<List<RecipeItem>> =
+                databaseRepository.getRecipeList()
+                    .flowOn(defaultDispatcher)
+            result
         }
     }
-
-    @OptIn(FlowPreview::class)
-    suspend fun <T> Flow<List<T>>.flattenToList() =
-        flatMapConcat { it.asFlow() }.toList()
 }

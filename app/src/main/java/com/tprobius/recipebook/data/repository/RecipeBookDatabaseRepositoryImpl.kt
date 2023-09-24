@@ -21,4 +21,8 @@ class RecipeBookDatabaseRepositoryImpl(
     override suspend fun getRecipeList(): Flow<List<RecipeItem>> {
         return withContext(Dispatchers.IO) { recipeBookDao.getRecipeList() }
     }
+
+    override suspend fun deleteRecipeList() {
+        return withContext(Dispatchers.IO) { recipeBookDao.deleteRecipeList() }
+    }
 }
