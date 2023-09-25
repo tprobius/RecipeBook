@@ -12,6 +12,7 @@ import com.tprobius.recipebook.R
 import com.tprobius.recipebook.databinding.FragmentRecipeListBinding
 import com.tprobius.recipebook.domain.entities.ListItem
 import com.tprobius.recipebook.domain.entities.RecipeItem
+import com.tprobius.recipebook.presentation.recipeadding.RecipeAddingFragment
 import com.tprobius.recipebook.presentation.recipedetails.RecipeDetailsFragment
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,8 +39,9 @@ class RecipeListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
         viewModel.getRecipeList()
-        setHandleState()
+//        setHandleState()
         setRecipeListAdapter()
+        setOnAddClick()
     }
 
     private fun handleState(state: RecipeListState) {
@@ -51,11 +53,11 @@ class RecipeListFragment : Fragment() {
         }
     }
 
-    private fun setHandleState() {
-        viewModel.state.observe(viewLifecycleOwner) {
-            handleState(it)
-        }
-    }
+//    private fun setHandleState() {
+//        viewModel.state.observe(viewLifecycleOwner) {
+//            handleState(it)
+//        }
+//    }
 
     private fun setRecipeListAdapter() {
         recipeListAdapter = ListDelegationAdapter(recipeItemDelegate {
@@ -103,6 +105,19 @@ class RecipeListFragment : Fragment() {
         binding.recipeListRecyclerView.isVisible = false
         binding.errorImageView.isVisible = true
         binding.errorTextView.isVisible = true
+    }
+
+    private fun setOnAddClick() {
+        binding.addScreenImageView.setOnClickListener {
+            navigateToRecipeAddingFragment()
+        }
+    }
+
+    private fun navigateToRecipeAddingFragment() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.activity_main, RecipeAddingFragment())
+            .setReorderingAllowed(true)
+            .commit()
     }
 
     override fun onDestroy() {

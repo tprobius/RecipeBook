@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecipeBookDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun addNewRecipe(newRecipe: RecipeItem)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -34,7 +34,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:contentDescription="@string/content_description"
-            android:src="@drawable/icons8_plate_96"
+            android:src="@drawable/ic_error"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/error_textView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|start"
                 android:contentDescription="@string/content_description"
-                app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+                app:srcCompat="@drawable/ic_arrow_back" />
 
             <TextView
                 android:id="@+id/title_textView"
@@ -176,7 +176,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginBottom="12dp"
-                    android:background="@drawable/ellipse_1"
+                    android:background="@drawable/bg_elipse"
                     android:contentDescription="@string/content_description"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/fats_imageView"
@@ -190,7 +190,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@drawable/ellipse_1"
+                    android:background="@drawable/bg_elipse"
                     android:contentDescription="@string/content_description"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/carbs_imageView"
@@ -203,7 +203,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginBottom="8dp"
-                    android:background="@drawable/ellipse_1"
+                    android:background="@drawable/bg_elipse"
                     android:contentDescription="@string/content_description"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

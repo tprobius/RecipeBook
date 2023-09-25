@@ -24,18 +24,12 @@ class GetRecipeListUseCase(
     private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default
 
     suspend operator fun invoke(): Flow<List<RecipeItem>> {
-        return if (hasInternetConnection(connectivityManager)) {
-            databaseRepository.deleteRecipeList()
-            val result: Flow<List<RecipeItem>> =
-                apiRepository.getRecipeList()
-                    .onEach { news -> databaseRepository.addRecipeList(news) }
-                    .flowOn(defaultDispatcher)
-            result
-        } else {
-            val result: Flow<List<RecipeItem>> =
-                databaseRepository.getRecipeList()
-                    .flowOn(defaultDispatcher)
-            result
+        if (hasInternetConnection(connectivityManager)) {
+            apiRepository.getRecipeList()
+                .onEach { news -> databaseRepository.addRecipeList(news) }
+                .flowOn(defaultDispatcher)
         }
+        return databaseRepository.getRecipeList()
+            .flowOn(defaultDispatcher)
     }
 }

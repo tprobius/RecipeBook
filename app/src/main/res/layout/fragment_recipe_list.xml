@@ -53,6 +53,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
+            android:id="@+id/homeScreen_imageView"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="center"
@@ -60,6 +61,7 @@
             android:src="@drawable/ic_home" />
 
         <ImageView
+            android:id="@+id/addScreen_imageView"
             android:layout_width="128dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
@@ -67,6 +69,7 @@
             android:src="@drawable/ic_add" />
 
         <ImageView
+            android:id="@+id/favouriteScreen_imageView"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="center"
@@ -93,7 +96,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/content_description"
-        android:src="@drawable/icons8_plate_96"
+        android:src="@drawable/ic_error"
         app:layout_constraintBottom_toTopOf="@+id/error_textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
