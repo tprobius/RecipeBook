@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_transparent">#74C8C8C8</color>
+    <color name="gray_text">#FFA9ABB7</color>
+    <color name="gray_light">#FFF6F6F9</color>
+    <color name="orange">#FFBB57</color>
 </resources>

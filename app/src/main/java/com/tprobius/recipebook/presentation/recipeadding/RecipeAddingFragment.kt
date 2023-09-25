@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.textfield.TextInputEditText
 import com.tprobius.recipebook.R
 import com.tprobius.recipebook.databinding.FragmentRecipeAddingBinding
 import com.tprobius.recipebook.domain.entities.RecipeItem
@@ -58,6 +58,7 @@ class RecipeAddingFragment : Fragment() {
         binding.errorTextView.isVisible = false
         binding.successImageView.isVisible = false
         binding.recipeImageImageView.isVisible = true
+        binding.recipeDetailsCardView.isVisible = true
         binding.recipeNameEditText.isVisible = true
         binding.recipeHeadlineEditText.isVisible = true
         binding.recipeDescriptionEditText.isVisible = true
@@ -83,7 +84,7 @@ class RecipeAddingFragment : Fragment() {
         binding.recipeDifficultyEditText.setImeAction(binding.saveButton)
     }
 
-    private fun EditText.setImeAction(button: Button) {
+    private fun TextInputEditText.setImeAction(button: Button) {
         setOnEditorActionListener { _, _, _ ->
             if (checkFieldsEmptiness()) {
                 button.isEnabled = false
@@ -136,6 +137,7 @@ class RecipeAddingFragment : Fragment() {
         binding.errorTextView.isVisible = false
         binding.successImageView.isVisible = false
         binding.recipeImageImageView.isVisible = false
+        binding.recipeDetailsCardView.isVisible = false
         binding.recipeNameEditText.isVisible = false
         binding.recipeHeadlineEditText.isVisible = false
         binding.recipeDescriptionEditText.isVisible = false
@@ -156,6 +158,7 @@ class RecipeAddingFragment : Fragment() {
         binding.successImageView.isVisible = true
         binding.successImageView.alpha = 0f
         binding.recipeImageImageView.isVisible = false
+        binding.recipeDetailsCardView.isVisible = false
         binding.recipeNameEditText.isVisible = false
         binding.recipeHeadlineEditText.isVisible = false
         binding.recipeDescriptionEditText.isVisible = false
@@ -196,6 +199,7 @@ class RecipeAddingFragment : Fragment() {
         binding.errorTextView.isVisible = true
         binding.successImageView.isVisible = false
         binding.recipeImageImageView.isVisible = false
+        binding.recipeDetailsCardView.isVisible = false
         binding.recipeNameEditText.isVisible = false
         binding.recipeHeadlineEditText.isVisible = false
         binding.recipeDescriptionEditText.isVisible = false
