@@ -1,4 +1,4 @@
-package com.tprobius.recipebook.utils
+package com.tprobius.recipebook.domain.utils
 
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities

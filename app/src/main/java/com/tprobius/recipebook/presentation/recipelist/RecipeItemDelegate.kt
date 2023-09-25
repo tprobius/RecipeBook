@@ -7,7 +7,7 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.tprobius.recipebook.databinding.ItemRecipeListBinding
 import com.tprobius.recipebook.domain.entities.ListItem
 import com.tprobius.recipebook.domain.entities.RecipeItem
-import com.tprobius.recipebook.utils.FillSpace
+import com.tprobius.recipebook.presentation.utils.FillSpace
 
 fun recipeItemDelegate(onRecipeClick: (RecipeItem) -> Unit) =
     adapterDelegateViewBinding<RecipeItem, ListItem, ItemRecipeListBinding>(

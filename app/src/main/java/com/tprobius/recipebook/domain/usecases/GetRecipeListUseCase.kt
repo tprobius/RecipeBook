@@ -6,7 +6,7 @@ import android.net.ConnectivityManager
 import com.tprobius.recipebook.domain.entities.RecipeItem
 import com.tprobius.recipebook.domain.repository.RecipeBookApiRepository
 import com.tprobius.recipebook.domain.repository.RecipeBookDatabaseRepository
-import com.tprobius.recipebook.utils.hasInternetConnection
+import com.tprobius.recipebook.domain.utils.hasInternetConnection
 
 class GetRecipeListUseCase(
     app: Application,

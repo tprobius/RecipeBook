@@ -16,7 +16,7 @@ import com.tprobius.recipebook.R
 import com.tprobius.recipebook.databinding.FragmentRecipeDetailsBinding
 import com.tprobius.recipebook.domain.entities.RecipeItem
 import com.tprobius.recipebook.presentation.recipelist.RecipeListFragment
-import com.tprobius.recipebook.utils.FillSpace
+import com.tprobius.recipebook.presentation.utils.FillSpace
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecipeDetailsFragment : Fragment() {

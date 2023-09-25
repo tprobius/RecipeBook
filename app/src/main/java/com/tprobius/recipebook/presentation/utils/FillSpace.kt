@@ -1,4 +1,4 @@
-package com.tprobius.recipebook.utils
+package com.tprobius.recipebook.presentation.utils
 
 import android.graphics.Bitmap
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool
