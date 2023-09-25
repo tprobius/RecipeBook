@@ -21,10 +21,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecipeAddingFragment : Fragment() {
     private var _binding: FragmentRecipeAddingBinding? = null
-    private val binding
-        get() = checkNotNull(_binding) { "Binding isn't initialized" }
+    private val binding get() = checkNotNull(_binding) { "Binding isn't initialized" }
 
     private val viewModel: RecipeAddingViewModel by viewModel()
+
     private val recipeId: Long = 0
 
     override fun onCreateView(
@@ -62,7 +62,6 @@ class RecipeAddingFragment : Fragment() {
     private fun navigateToRecipeListFragment() {
         parentFragmentManager.beginTransaction()
             .replace(R.id.activity_main, RecipeListFragment())
-            .setReorderingAllowed(true)
             .commit()
     }
 
@@ -203,7 +202,6 @@ class RecipeAddingFragment : Fragment() {
     private fun navigateToRecipeList() {
         parentFragmentManager.beginTransaction()
             .replace(R.id.activity_main, RecipeListFragment())
-            .setReorderingAllowed(true)
             .commit()
     }
 

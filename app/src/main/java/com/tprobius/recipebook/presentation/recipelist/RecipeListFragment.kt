@@ -39,7 +39,6 @@ class RecipeListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
         viewModel.getRecipeList()
-//        setHandleState()
         setRecipeListAdapter()
         setOnAddClick()
     }
@@ -52,12 +51,6 @@ class RecipeListFragment : Fragment() {
             RecipeListState.Error -> showErrorState()
         }
     }
-
-//    private fun setHandleState() {
-//        viewModel.state.observe(viewLifecycleOwner) {
-//            handleState(it)
-//        }
-//    }
 
     private fun setRecipeListAdapter() {
         recipeListAdapter = ListDelegationAdapter(recipeItemDelegate {

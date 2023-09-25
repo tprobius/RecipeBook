@@ -1,6 +1,7 @@
 package com.tprobius.recipebook.presentation.recipedetails
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -77,7 +78,6 @@ class RecipeDetailsFragment : Fragment() {
         }
     }
 
-
     private fun setHandleState() {
         viewModel.state.observe(viewLifecycleOwner) {
             handleState(it)
@@ -152,7 +152,15 @@ class RecipeDetailsFragment : Fragment() {
         private const val RECIPE_KEY = "recipe_key"
 
         private var Bundle.recipe
-            get() = getSerializable(RECIPE_KEY)
+            get() =
+                when {
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> getSerializable(
+                        RECIPE_KEY,
+                        RecipeItem::class.java
+                    )
+
+                    else -> @Suppress("DEPRECATION") getSerializable(RECIPE_KEY) as? RecipeItem
+                }
             set(value) = putSerializable(RECIPE_KEY, value)
 
         fun newInstance(recipeItem: RecipeItem) = RecipeDetailsFragment().apply {
