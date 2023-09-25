@@ -34,5 +34,5 @@
 #### Backlog.
 
 - Реализовать добавление фото в пользовательские рецепты.
-- Добавить в RcyclerView DiffUtils.
+- Добавить DiffUtils в RcyclerView.
 
