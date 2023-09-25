@@ -11,6 +11,7 @@ import com.tprobius.recipebook.domain.repository.RecipeBookApiRepository
 import com.tprobius.recipebook.domain.repository.RecipeBookDatabaseRepository
 import com.tprobius.recipebook.domain.usecases.AddNewRecipeUseCase
 import com.tprobius.recipebook.domain.usecases.GetRecipeListUseCase
+import com.tprobius.recipebook.presentation.recipeadding.RecipeAddingViewModel
 import com.tprobius.recipebook.presentation.recipedetails.RecipeDetailsViewModel
 import com.tprobius.recipebook.presentation.recipelist.RecipeListViewModel
 import okhttp3.OkHttpClient
@@ -27,7 +28,6 @@ val apiModule = module {
 }
 
 val databaseModule = module {
-//    single<RecipeBookDatabase> { provideRecipeBookDatabase(app = get()) }
     single { provideRecipeBookDatabase(app = get()).recipeBookDao }
     single<RecipeBookDatabaseRepository> { RecipeBookDatabaseRepositoryImpl(recipeBookDao = get()) }
 }
@@ -40,6 +40,7 @@ val useCasesModule = module {
 val viewModelModule = module {
     viewModel { RecipeListViewModel(getRecipeListUseCase = get()) }
     viewModel { RecipeDetailsViewModel() }
+    viewModel { RecipeAddingViewModel(addNewRecipeUseCase = get()) }
 }
 
 private fun provideRecipeBookApiRetrofit(): Retrofit.Builder {

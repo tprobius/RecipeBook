@@ -2,4 +2,14 @@
     <string name="app_name">RecipeBook</string>
     <string name="content_description">content_description</string>
     <string name="error_massage">Something went wrong.\nPlease try again later.</string>
+    <string name="save">Save</string>
+    <string name="recipe_name">Recipe name</string>
+    <string name="recipe_headline">Recipe headline</string>
+    <string name="recipe_description">Recipe description</string>
+    <string name="calories">Calories</string>
+    <string name="proteins">Proteins</string>
+    <string name="fats">Fats</string>
+    <string name="carbs">Carbs</string>
+    <string name="time">Time</string>
+    <string name="difficulty">Difficulty</string>
 </resources>

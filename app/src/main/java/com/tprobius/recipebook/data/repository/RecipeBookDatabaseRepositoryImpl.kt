@@ -4,7 +4,6 @@ import com.tprobius.recipebook.data.database.RecipeBookDao
 import com.tprobius.recipebook.domain.entities.RecipeItem
 import com.tprobius.recipebook.domain.repository.RecipeBookDatabaseRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class RecipeBookDatabaseRepositoryImpl(
@@ -18,7 +17,7 @@ class RecipeBookDatabaseRepositoryImpl(
         return withContext(Dispatchers.IO) { recipeBookDao.addRecipeList(recipeList) }
     }
 
-    override suspend fun getRecipeList(): Flow<List<RecipeItem>> {
+    override suspend fun getRecipeList(): List<RecipeItem> {
         return withContext(Dispatchers.IO) { recipeBookDao.getRecipeList() }
     }
 
