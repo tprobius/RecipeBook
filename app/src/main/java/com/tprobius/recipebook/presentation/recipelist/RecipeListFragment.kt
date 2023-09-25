@@ -108,7 +108,7 @@ class RecipeListFragment : Fragment() {
     }
 
     private fun setOnAddClick() {
-        binding.addScreenImageView.setOnClickListener {
+        binding.addNewFloatingActionButton.setOnClickListener {
             navigateToRecipeAddingFragment()
         }
     }
