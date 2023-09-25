@@ -36,7 +36,7 @@
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
+                android:id="@+id/details_cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="8dp"
@@ -97,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="@{recipeListItem.difficulty == 3 ? `Hard` : (recipeListItem.difficulty == 2 ? `Medium` : `Easy`)}"
+                        android:text="@{recipeListItem.difficulty == 0 ? `Easy` : (recipeListItem.difficulty == 1 ? `Easy` : (recipeListItem.difficulty == 2 ? `Medium` : `Hard`))}"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                         app:layout_constraintEnd_toStartOf="@+id/divider4"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -172,11 +172,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/textView4"
+                app:layout_constraintTop_toTopOf="@id/name_textView"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/name_textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -184,13 +184,13 @@
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView5"
-                app:layout_constraintEnd_toEndOf="@+id/textView5"
-                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintBottom_toTopOf="@+id/headline_textView"
+                app:layout_constraintEnd_toEndOf="@+id/headline_textView"
+                app:layout_constraintStart_toStartOf="@+id/headline_textView"
                 tools:text="Moroccan Skirt Steak" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/headline_textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -200,7 +200,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/cardView2"
+                app:layout_constraintBottom_toTopOf="@+id/details_cardView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="with Spinach and Lemon Couscous" />

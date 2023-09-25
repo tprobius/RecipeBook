@@ -21,16 +21,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/description_scrollView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout"
+            tools:visibility="gone" />
 
         <ImageView
             android:id="@+id/error_imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:contentDescription="@string/content_description"
             android:src="@drawable/ic_error"
@@ -40,7 +41,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:visibility="gone" />
 
         <TextView
             android:id="@+id/error_textView"
@@ -54,9 +56,12 @@
             android:textAlignment="center"
             android:textSize="18sp"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/description_scrollView"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/error_imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/error_imageView"
+            tools:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/topAppBar_linearLayout"
@@ -100,6 +105,48 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout"
             tools:src="@tools:sample/backgrounds/scenic" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/orange_transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/recipeImage_imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/recipeName_textView" />
+
+        <TextView
+            android:id="@+id/recipeName_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{recipeItem.name}"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/recipeHeadline_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Moroccan Skirt Steak" />
+
+        <TextView
+            android:id="@+id/recipeHeadline_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{recipeItem.headline}"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/recipeImage_imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="with Spinach and Lemon Couscous" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/recipeInfo_cardView"
@@ -248,48 +295,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/white_transparent"
-            app:layout_constraintBottom_toBottomOf="@+id/recipeImage_imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/recipeName_textView" />
-
-        <TextView
-            android:id="@+id/recipeName_textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="@{recipeItem.name}"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/recipeHeadline_textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Moroccan Skirt Steak" />
-
-        <TextView
-            android:id="@+id/recipeHeadline_textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="@{recipeItem.headline}"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/recipeImage_imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="with Spinach and Lemon Couscous" />
-
         <ScrollView
             android:id="@+id/description_scrollView"
             android:layout_width="0dp"
@@ -302,7 +307,7 @@
             app:layout_constraintTop_toBottomOf="@id/recipeInfo_cardView">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/recipeDescription_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
