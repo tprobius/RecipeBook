@@ -40,6 +40,7 @@ class RecipeAddingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
         setFieldsChecker()
+        setOnBackClick()
         setOnSaveClick()
     }
 
@@ -50,6 +51,19 @@ class RecipeAddingFragment : Fragment() {
             RecipeAddingState.Success -> showSuccessState()
             RecipeAddingState.Error -> showErrorState()
         }
+    }
+
+    private fun setOnBackClick() {
+        binding.backImageView.setOnClickListener {
+            navigateToRecipeListFragment()
+        }
+    }
+
+    private fun navigateToRecipeListFragment() {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.activity_main, RecipeListFragment())
+            .setReorderingAllowed(true)
+            .commit()
     }
 
     private fun showInitialState() {

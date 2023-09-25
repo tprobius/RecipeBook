@@ -117,6 +117,7 @@ class RecipeListFragment : Fragment() {
         parentFragmentManager.beginTransaction()
             .replace(R.id.activity_main, RecipeAddingFragment())
             .setReorderingAllowed(true)
+            .addToBackStack(null)
             .commit()
     }
 
