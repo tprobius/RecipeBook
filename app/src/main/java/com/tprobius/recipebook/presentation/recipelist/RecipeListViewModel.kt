@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tprobius.recipebook.domain.usecases.GetRecipeListUseCase
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class RecipeListViewModel(
@@ -23,11 +22,11 @@ class RecipeListViewModel(
             _state.value = RecipeListState.Loading
             try {
                 getRecipeListUseCase().let {
-                    if (it.first().isEmpty()) {
+                    if (it.isEmpty()) {
                         _state.postValue(RecipeListState.Error)
 
                     } else {
-                        _state.postValue(RecipeListState.Success(it.first()))
+                        _state.postValue(RecipeListState.Success(it))
                     }
                 }
             } catch (e: Exception) {
