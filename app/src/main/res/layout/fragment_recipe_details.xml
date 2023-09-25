@@ -21,7 +21,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/bottomAppBar_linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topAppBar_linearLayout" />
@@ -50,13 +49,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:lineSpacingExtra="4sp"
             android:text="@string/error_massage"
             android:textAlignment="center"
             android:textSize="18sp"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/bottomAppBar_linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/error_imageView" />
@@ -270,7 +267,7 @@
             android:layout_marginBottom="8dp"
             android:text="@{recipeItem.name}"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/recipeHeadline_textView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -286,7 +283,7 @@
             android:layout_marginBottom="8dp"
             android:text="@{recipeItem.headline}"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/recipeImage_imageView"
             app:layout_constraintEnd_toEndOf="parent"
@@ -298,8 +295,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@id/bottomAppBar_linearLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recipeInfo_cardView">
@@ -313,50 +309,15 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:lineSpacingExtra="4sp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:paddingBottom="24dp"
                 android:text="@{recipeItem.description}"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 tools:text="Close your eyes, open up your Ras El Hanout and inhale deeply. You are no longer standing in your kitchen. Around you are the sounds of a bustling market. Robed men sell ornate carpets and a camel nibbles affectionately at your ear.  OK, we\u2019re pretty sure Paul McKenna\u2019s job is safe for now, but get cooking this recipe and take dinnertime on a magic carpet ride to Casablanca! Our tip for this recipe is to take your meat out of the fridge at least 30 minutes before dinner which will allow you to cook it more evenly." />
 
         </ScrollView>
 
-        <LinearLayout
-            android:id="@+id/bottomAppBar_linearLayout"
-            android:layout_width="0dp"
-            android:layout_height="64dp"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/content_description"
-                android:src="@drawable/ic_home" />
-
-            <ImageView
-                android:layout_width="128dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/content_description"
-                android:src="@drawable/ic_add" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/content_description"
-                android:src="@drawable/ic_favourite_dark" />
-
-        </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
-
-
-    <!--    android:text="@{recipeItem.difficulty == 0||1 ? `Easy` : (recipeItem.difficulty == 2 ? `Medium` : `Hard`)}"-->
