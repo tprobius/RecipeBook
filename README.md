@@ -54,6 +54,7 @@ AdapterDelegates используется на перспективу дальн
 - Room
 - Retrofit
 - Gson
+- Glide
 
 ### Backlog.
 
