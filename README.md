@@ -56,6 +56,7 @@ https://github.com/tprobius/RecipeBook.git
 
 ### Backlog.
 
-- Реализовать добавление фото в пользовательские рецепты.
-- Добавить DiffUtils в RcyclerView.
+- Добавление фото в пользовательские рецепты.
+- Редактирование / удаление пользовательских рецептов.
+- DiffUtils в RcyclerView.
 
