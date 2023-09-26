@@ -42,6 +42,7 @@ https://github.com/tprobius/RecipeBook.git
 ### Стек.
 
 Проект реализован с применением подхода Clean Architecture и MVVM+UDF. 
+AdapterDelegates используется на перспективу дальнейшего развития проекта - для поддержки отображения различных вариантов элементов списка.
 
 - Kotlin
 - AdapterDelegates
