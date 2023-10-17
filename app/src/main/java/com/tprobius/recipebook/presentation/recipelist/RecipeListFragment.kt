@@ -26,6 +26,11 @@ class RecipeListFragment : Fragment() {
 
     private lateinit var recipeListAdapter: ListDelegationAdapter<List<ListItem>>
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getRecipeList()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,7 +43,6 @@ class RecipeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
-        viewModel.getRecipeList()
         setRecipeListAdapter()
         setOnAddClick()
     }
