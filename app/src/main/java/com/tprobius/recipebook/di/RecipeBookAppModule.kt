@@ -14,6 +14,7 @@ import com.tprobius.recipebook.domain.usecases.GetRecipeListUseCase
 import com.tprobius.recipebook.presentation.recipeadding.RecipeAddingViewModel
 import com.tprobius.recipebook.presentation.recipedetails.RecipeDetailsViewModel
 import com.tprobius.recipebook.presentation.recipelist.RecipeListViewModel
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -24,12 +25,22 @@ import retrofit2.converter.gson.GsonConverterFactory
 val apiModule = module {
     single { provideRecipeBookApiRetrofit() }
     single { provideRecipeBookApi(retrofitBuilder = get()) }
-    factory<RecipeBookApiRepository> { RecipeBookApiRepositoryImpl(recipeBookApi = get()) }
+    factory<RecipeBookApiRepository> {
+        RecipeBookApiRepositoryImpl(
+            recipeBookApi = get(),
+            dispatcher = Dispatchers.IO
+        )
+    }
 }
 
 val databaseModule = module {
     single { provideRecipeBookDatabase(app = get()).recipeBookDao }
-    single<RecipeBookDatabaseRepository> { RecipeBookDatabaseRepositoryImpl(recipeBookDao = get()) }
+    single<RecipeBookDatabaseRepository> {
+        RecipeBookDatabaseRepositoryImpl(
+            recipeBookDao = get(),
+            dispatcher = Dispatchers.IO
+        )
+    }
 }
 
 val useCasesModule = module {

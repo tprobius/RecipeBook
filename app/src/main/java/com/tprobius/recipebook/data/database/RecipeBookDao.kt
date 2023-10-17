@@ -8,11 +8,8 @@ import com.tprobius.recipebook.domain.entities.RecipeItem
 
 @Dao
 interface RecipeBookDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addNewRecipe(newRecipe: RecipeItem)
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addRecipeList(recipeList: List<RecipeItem>)
+    fun addNewRecipe(newRecipe: RecipeItem)
 
     @Query("SELECT * FROM recipes")
     fun getRecipeList(): List<RecipeItem>

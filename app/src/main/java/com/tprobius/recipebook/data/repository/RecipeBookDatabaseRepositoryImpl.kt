@@ -3,25 +3,22 @@ package com.tprobius.recipebook.data.repository
 import com.tprobius.recipebook.data.database.RecipeBookDao
 import com.tprobius.recipebook.domain.entities.RecipeItem
 import com.tprobius.recipebook.domain.repository.RecipeBookDatabaseRepository
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
 class RecipeBookDatabaseRepositoryImpl(
-    private val recipeBookDao: RecipeBookDao
+    private val recipeBookDao: RecipeBookDao,
+    private val dispatcher: CoroutineDispatcher
 ) : RecipeBookDatabaseRepository {
     override suspend fun addNewRecipe(newRecipe: RecipeItem) {
-        return withContext(Dispatchers.IO) { recipeBookDao.addNewRecipe(newRecipe) }
-    }
-
-    override suspend fun addRecipeList(recipeList: List<RecipeItem>) {
-        return withContext(Dispatchers.IO) { recipeBookDao.addRecipeList(recipeList) }
+        return withContext(dispatcher) { recipeBookDao.addNewRecipe(newRecipe) }
     }
 
     override suspend fun getRecipeList(): List<RecipeItem> {
-        return withContext(Dispatchers.IO) { recipeBookDao.getRecipeList() }
+        return withContext(dispatcher) { recipeBookDao.getRecipeList() }
     }
 
     override suspend fun deleteRecipeList() {
-        return withContext(Dispatchers.IO) { recipeBookDao.deleteRecipeList() }
+        return withContext(dispatcher) { recipeBookDao.deleteRecipeList() }
     }
 }
