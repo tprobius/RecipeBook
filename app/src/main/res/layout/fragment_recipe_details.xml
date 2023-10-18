@@ -172,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:clickable="false"
-                    android:text="@{recipeItem.time}"
+                    android:text="@{recipeItem.time + ` min`}"
                     app:chipIcon="@drawable/ic_time"
                     app:chipStrokeWidth="0dp"
                     app:layout_constraintBottom_toTopOf="@+id/proteins_imageView"
