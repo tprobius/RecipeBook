@@ -16,12 +16,12 @@ class GetRecipeListUseCase(
         app.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     suspend operator fun invoke(): List<RecipeItem> {
-//        if (hasInternetConnection(connectivityManager)) {
-//            apiRepository.getRecipeList().forEach {
-//                databaseRepository.addNewRecipe(it)
-//            }
-//        }
+        if (hasInternetConnection(connectivityManager)) {
+            apiRepository.getRecipeList().forEach {
+                databaseRepository.addNewRecipe(it)
+            }
+        }
 
-        return apiRepository.getRecipeList()
+        return databaseRepository.getRecipeList()
     }
 }
