@@ -4,7 +4,6 @@ import com.tprobius.recipebook.data.model.RecipeListItem
 import com.tprobius.recipebook.domain.entities.RecipeItem
 
 fun RecipeListItem.toRecipeItem() = RecipeItem(
-    idLocal = id.hashCode().toLong(),
     idRemote = id,
     name = name,
     headline = headline,
@@ -14,6 +13,6 @@ fun RecipeListItem.toRecipeItem() = RecipeItem(
     fats = fats,
     carbons = carbons,
     difficulty = difficulty,
-    time = time,
+    time = time?.filter { it.isDigit() }?.toInt(),
     image = image
 )

@@ -77,5 +77,7 @@ fun provideRecipeBookDatabase(app: Application): RecipeBookDatabase {
         app,
         RecipeBookDatabase::class.java,
         RecipeBookDatabase.DATABASE_NAME
-    ).build()
+    )
+        .fallbackToDestructiveMigration()
+        .build()
 }

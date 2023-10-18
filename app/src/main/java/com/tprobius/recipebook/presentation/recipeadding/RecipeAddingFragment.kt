@@ -25,8 +25,6 @@ class RecipeAddingFragment : Fragment() {
 
     private val viewModel: RecipeAddingViewModel by viewModel()
 
-    private val recipeId: Long = 0
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -127,8 +125,7 @@ class RecipeAddingFragment : Fragment() {
         binding.saveButton.setOnClickListener {
             viewModel.addNewRecipe(
                 RecipeItem(
-                    idLocal = recipeId,
-                    idRemote = recipeId.toString(),
+                    idRemote = "",
                     name = binding.recipeNameEditText.text.toString(),
                     headline = binding.recipeHeadlineEditText.text.toString(),
                     description = binding.recipeDescriptionEditText.text.toString(),
@@ -137,7 +134,7 @@ class RecipeAddingFragment : Fragment() {
                     fats = binding.recipeFatsEditText.text.toString(),
                     carbons = binding.recipeCarbsEditText.text.toString(),
                     difficulty = binding.recipeDifficultyEditText.text.toString().toInt(),
-                    time = "PT" + binding.recipeTimeEditText.text.toString() + "M",
+                    time = binding.recipeTimeEditText.text.toString().toInt(),
                     image = null
                 )
             )

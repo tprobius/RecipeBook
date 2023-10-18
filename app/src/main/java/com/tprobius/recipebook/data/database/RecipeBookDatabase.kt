@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.tprobius.recipebook.domain.entities.RecipeItem
 
-@Database(entities = [RecipeItem::class], version = 1, exportSchema = false)
+@Database(entities = [RecipeItem::class], version = 2, exportSchema = false)
 abstract class RecipeBookDatabase : RoomDatabase() {
     abstract val recipeBookDao: RecipeBookDao
 

@@ -16,7 +16,7 @@ fun recipeItemDelegate(onRecipeClick: (RecipeItem) -> Unit) =
         }
     ) {
         bind {
-            binding.recipeListItem = item
+            binding.recipeItem = item
             binding.imageView
             binding.cardView.setOnClickListener {
                 onRecipeClick(item)
