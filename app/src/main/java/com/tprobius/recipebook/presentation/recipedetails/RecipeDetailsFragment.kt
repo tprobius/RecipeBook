@@ -26,7 +26,7 @@ class RecipeDetailsFragment : Fragment() {
 
     private val viewModel: RecipeDetailsViewModel by viewModel()
 
-    private var recipeItem: RecipeItem? = null
+    private lateinit var recipeItem: RecipeItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -119,9 +119,22 @@ class RecipeDetailsFragment : Fragment() {
     }
 
     private fun setRecipeItem() {
-        binding.recipeItem = recipeItem
+        binding.recipeNameTextView.text = recipeItem.name
+        binding.recipeHeadlineTextView.text = recipeItem.headline
+        binding.recipeDescriptionTextView.text = recipeItem.description
+        binding.proteinTextView.text = getString(R.string.proteins, recipeItem.proteins)
+        binding.fatsTextView.text = getString(R.string.fats, recipeItem.fats)
+        binding.carbsTextView.text = getString(R.string.carbs, recipeItem.carbons)
+        binding.timeChip.text = getString(R.string.time, recipeItem.time)
+        binding.caloriesChip.text = recipeItem.calories
+        binding.difficultyChip.text = when (recipeItem.difficulty) {
+            0, 1 -> getString(R.string.easy)
+            2 -> getString(R.string.medium)
+            else -> getString(R.string.hard)
+        }
+
         Glide.with(binding.recipeImageImageView)
-            .load(recipeItem?.image)
+            .load(recipeItem.image)
             .transform(MultiTransformation(FillSpace(), RoundedCorners(8)))
             .into(binding.recipeImageImageView)
     }
