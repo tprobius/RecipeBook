@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface RecipeBookApi {
-    @GET("android-test/recipes.json/")
+    @GET("android-test/recipes.json")
     suspend fun getRecipeList(): Response<List<RecipeListItem>>
 
     companion object {

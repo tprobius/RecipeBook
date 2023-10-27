@@ -19,9 +19,7 @@ class GetRecipeListUseCase(
         if (hasInternetConnection(connectivityManager)) {
             val recipeList = apiRepository.getRecipeList()
             if (recipeList.isNotEmpty()) {
-                recipeList.forEach {
-                    databaseRepository.addNewRecipe(it)
-                }
+                databaseRepository.addRecipeList(recipeList)
             }
         }
 
