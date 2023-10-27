@@ -14,6 +14,10 @@ class RecipeBookDatabaseRepositoryImpl(
         return withContext(dispatcher) { recipeBookDao.addNewRecipe(newRecipe) }
     }
 
+    override suspend fun addRecipeList(recipeList: List<RecipeItem>) {
+        return withContext(dispatcher) { recipeBookDao.addRecipeList(recipeList) }
+    }
+
     override suspend fun getRecipeList(): List<RecipeItem> {
         return withContext(dispatcher) { recipeBookDao.getRecipeList() }
     }
