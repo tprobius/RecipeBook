@@ -17,8 +17,11 @@ class GetRecipeListUseCase(
 
     suspend operator fun invoke(): List<RecipeItem> {
         if (hasInternetConnection(connectivityManager)) {
-            apiRepository.getRecipeList().forEach {
-                databaseRepository.addNewRecipe(it)
+            val recipeList = apiRepository.getRecipeList()
+            if (recipeList.isNotEmpty()) {
+                recipeList.forEach {
+                    databaseRepository.addNewRecipe(it)
+                }
             }
         }
 
