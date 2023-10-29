@@ -1,3 +1,5 @@
 package com.tprobius.recipebook.domain.entities
 
-interface ListItem
+interface ListItem {
+    val itemId: Long?
+}

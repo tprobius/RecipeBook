@@ -7,7 +7,7 @@ import java.io.Serializable
 @Entity(tableName = "recipes")
 data class RecipeItem(
     @PrimaryKey(autoGenerate = true)
-    val idLocal: Long = 0,
+    override val itemId: Long? = 0,
     val idRemote: String?,
     val name: String?,
     val headline: String?,
