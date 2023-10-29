@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.tprobius.recipebook.R
 import com.tprobius.recipebook.databinding.FragmentRecipeListBinding
-import com.tprobius.recipebook.domain.entities.ListItem
 import com.tprobius.recipebook.domain.entities.RecipeItem
 import com.tprobius.recipebook.presentation.recipeadding.RecipeAddingFragment
 import com.tprobius.recipebook.presentation.recipedetails.RecipeDetailsFragment
@@ -24,7 +22,7 @@ class RecipeListFragment : Fragment() {
 
     private val viewModel: RecipeListViewModel by viewModel()
 
-    private lateinit var recipeListAdapter: ListDelegationAdapter<List<ListItem>>
+    private lateinit var recipeListAdapter: RecipeItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,9 +55,7 @@ class RecipeListFragment : Fragment() {
     }
 
     private fun setRecipeListAdapter() {
-        recipeListAdapter = ListDelegationAdapter(recipeItemDelegate {
-            navigateToRecipeDetailsFragment(it)
-        })
+        recipeListAdapter = RecipeItemAdapter { navigateToRecipeDetailsFragment(it) }
         binding.recipeListRecyclerView.adapter = recipeListAdapter
     }
 
@@ -92,7 +88,6 @@ class RecipeListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             recipeListAdapter.apply {
                 items = recipeList
-                notifyDataSetChanged()
             }
         }
     }
