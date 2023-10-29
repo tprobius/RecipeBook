@@ -62,7 +62,7 @@ AdapterDelegates используется на перспективу дальн
 - AdapterDelegates
 - Clean Architecture
 - MVVM + UDF
-- Data / View binding
+- View binding
 - Coroutine
 - Koin
 - Room
