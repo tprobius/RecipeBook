@@ -18,4 +18,14 @@ class MainActivity : AppCompatActivity() {
         _binding = null
         super.onDestroy()
     }
+
+    companion object {
+        private var newSession = true
+
+        fun getSessionState(): Boolean = newSession
+
+        fun setSessionState() {
+            newSession = !newSession
+        }
+    }
 }
