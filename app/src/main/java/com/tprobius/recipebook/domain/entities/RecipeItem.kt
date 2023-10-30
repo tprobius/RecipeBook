@@ -7,7 +7,7 @@ import java.io.Serializable
 @Entity(tableName = "recipes")
 data class RecipeItem(
     @PrimaryKey(autoGenerate = true)
-    override val itemId: Long? = 0,
+    val itemId: Long? = 0,
     val idRemote: String?,
     val name: String?,
     val headline: String?,
@@ -19,4 +19,4 @@ data class RecipeItem(
     val difficulty: Int?,
     val time: Int?,
     val image: String?
-) : ListItem, Serializable
+) : Serializable

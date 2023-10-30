@@ -10,12 +10,11 @@ import com.bumptech.glide.request.transition.Transition
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.tprobius.recipebook.R
 import com.tprobius.recipebook.databinding.ItemRecipeListBinding
-import com.tprobius.recipebook.domain.entities.ListItem
 import com.tprobius.recipebook.domain.entities.RecipeItem
 
 object RecipeItemDelegate {
     fun recipeItemDelegate(onRecipeClick: (RecipeItem) -> Unit) =
-        adapterDelegateViewBinding<RecipeItem, ListItem, ItemRecipeListBinding>(
+        adapterDelegateViewBinding<RecipeItem, RecipeItem, ItemRecipeListBinding>(
             { layoutInflater, parent ->
                 ItemRecipeListBinding.inflate(layoutInflater, parent, false)
             }
