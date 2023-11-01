@@ -7,10 +7,10 @@
     <string name="recipe_headline">Recipe headline</string>
     <string name="recipe_description">Recipe description</string>
     <string name="calories">Calories</string>
-<!--    <string name="proteins">Proteins</string>-->
-<!--    <string name="fats">Fats</string>-->
-<!--    <string name="carbs">Carbs</string>-->
-<!--    <string name="time">Time</string>-->
+    <string name="proteinsHint">Proteins</string>
+    <string name="fatsHint">Fats</string>
+    <string name="carbsHint">Carbs</string>
+    <string name="timeHint">Time</string>
     <string name="difficulty">Difficulty</string>
     <string name="easy">Easy</string>
     <string name="medium">Medium</string>

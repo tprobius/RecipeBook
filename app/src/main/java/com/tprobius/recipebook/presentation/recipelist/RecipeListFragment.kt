@@ -66,25 +66,30 @@ class RecipeListFragment : Fragment() {
             .commit()
     }
 
+    private fun setViewsVisibility(
+        progressBarIsVisible: Boolean = false,
+        recyclerViewIsVisible: Boolean = false,
+        errorImageViewIsVisible: Boolean = false,
+        errorTextViewIsVisible: Boolean = false
+    ) {
+        with(binding) {
+            progressBar.isVisible = progressBarIsVisible
+            recipeListRecyclerView.isVisible = recyclerViewIsVisible
+            errorImageView.isVisible = errorImageViewIsVisible
+            errorTextView.isVisible = errorTextViewIsVisible
+        }
+    }
+
     private fun showInitialState() {
-        binding.progressBar.isVisible = false
-        binding.recipeListRecyclerView.isVisible = false
-        binding.errorImageView.isVisible = false
-        binding.errorTextView.isVisible = false
+        setViewsVisibility()
     }
 
     private fun showLoadingState() {
-        binding.progressBar.isVisible = true
-        binding.recipeListRecyclerView.isVisible = false
-        binding.errorImageView.isVisible = false
-        binding.errorTextView.isVisible = false
+        setViewsVisibility(progressBarIsVisible = true)
     }
 
     private fun showSuccessState(recipeList: List<RecipeItem>) {
-        binding.progressBar.isVisible = false
-        binding.recipeListRecyclerView.isVisible = true
-        binding.errorImageView.isVisible = false
-        binding.errorTextView.isVisible = false
+        setViewsVisibility(recyclerViewIsVisible = true)
         viewLifecycleOwner.lifecycleScope.launch {
             recipeListAdapter.apply {
                 items = recipeList
@@ -93,10 +98,7 @@ class RecipeListFragment : Fragment() {
     }
 
     private fun showErrorState() {
-        binding.progressBar.isVisible = false
-        binding.recipeListRecyclerView.isVisible = false
-        binding.errorImageView.isVisible = true
-        binding.errorTextView.isVisible = true
+        setViewsVisibility(errorImageViewIsVisible = true, errorTextViewIsVisible = true)
     }
 
     private fun setOnAddClick() {
