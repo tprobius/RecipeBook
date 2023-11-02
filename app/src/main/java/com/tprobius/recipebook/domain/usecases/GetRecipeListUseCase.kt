@@ -27,8 +27,8 @@ class GetRecipeListUseCase(
                 if (recipeList.isNotEmpty()) {
                     databaseRepository.addRecipeList(recipeList)
                 }
+                MainActivity.setSessionState()
             }
-            MainActivity.setSessionState()
         }
 
         return databaseRepository.getRecipeList()

@@ -42,6 +42,7 @@ class RecipeListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.state.observe(viewLifecycleOwner, ::handleState)
         setRecipeListAdapter()
+        setOnTryAgainListener()
         setOnAddClick()
     }
 
@@ -66,17 +67,25 @@ class RecipeListFragment : Fragment() {
             .commit()
     }
 
+    private fun setOnTryAgainListener() {
+        binding.tryAgainButton.setOnClickListener {
+            viewModel.getRecipeList()
+        }
+    }
+
     private fun setViewsVisibility(
         progressBarIsVisible: Boolean = false,
         recyclerViewIsVisible: Boolean = false,
         errorImageViewIsVisible: Boolean = false,
-        errorTextViewIsVisible: Boolean = false
+        errorTextViewIsVisible: Boolean = false,
+        tryAgainButtonIsVisible: Boolean = false
     ) {
         with(binding) {
             progressBar.isVisible = progressBarIsVisible
             recipeListRecyclerView.isVisible = recyclerViewIsVisible
             errorImageView.isVisible = errorImageViewIsVisible
             errorTextView.isVisible = errorTextViewIsVisible
+            tryAgainButton.isVisible = tryAgainButtonIsVisible
         }
     }
 
@@ -98,7 +107,11 @@ class RecipeListFragment : Fragment() {
     }
 
     private fun showErrorState() {
-        setViewsVisibility(errorImageViewIsVisible = true, errorTextViewIsVisible = true)
+        setViewsVisibility(
+            errorImageViewIsVisible = true,
+            errorTextViewIsVisible = true,
+            tryAgainButtonIsVisible = true
+        )
     }
 
     private fun setOnAddClick() {
