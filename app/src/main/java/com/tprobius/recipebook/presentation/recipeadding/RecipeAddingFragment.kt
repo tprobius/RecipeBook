@@ -63,24 +63,61 @@ class RecipeAddingFragment : Fragment() {
             .commit()
     }
 
+    private fun setViewsVisibility(
+        progressBarIsVisible: Boolean = false,
+        errorImageViewIsVisible: Boolean = false,
+        errorTextViewIsVisible: Boolean = false,
+        successImageViewVIsVisible: Boolean = false,
+        recipeImageImageViewIsVisible: Boolean = false,
+        recipeDetailsCardViewIsVisible: Boolean = false,
+        recipeNameEditTextIsVisible: Boolean = false,
+        recipeHeadlineEditTextIsVisible: Boolean = false,
+        recipeDescriptionEditTextVisibility: Boolean = false,
+        recipeCaloriesEditTextIsVisible: Boolean = false,
+        recipeProteinsEditTextIsVisible: Boolean = false,
+        recipeFatsEditTextIsVisible: Boolean = false,
+        recipeCarbsEditTextIsVisible: Boolean = false,
+        recipeTimeEditTextIsVisible: Boolean = false,
+        recipeDifficultyEditTextIsVisible: Boolean = false,
+        saveButtonIsVisible: Boolean = false,
+        saveButtonIsEnabled: Boolean = false
+    ) {
+        with(binding) {
+            progressBar.isVisible = progressBarIsVisible
+            errorImageView.isVisible = errorImageViewIsVisible
+            errorTextView.isVisible = errorTextViewIsVisible
+            successImageView.isVisible = successImageViewVIsVisible
+            recipeImageImageView.isVisible = recipeImageImageViewIsVisible
+            recipeDetailsCardView.isVisible = recipeDetailsCardViewIsVisible
+            recipeNameEditText.isVisible = recipeNameEditTextIsVisible
+            recipeHeadlineEditText.isVisible = recipeHeadlineEditTextIsVisible
+            recipeDescriptionEditText.isVisible = recipeDescriptionEditTextVisibility
+            recipeCaloriesEditText.isVisible = recipeCaloriesEditTextIsVisible
+            recipeProteinsEditText.isVisible = recipeProteinsEditTextIsVisible
+            recipeFatsEditText.isVisible = recipeFatsEditTextIsVisible
+            recipeCarbsEditText.isVisible = recipeCarbsEditTextIsVisible
+            recipeTimeEditText.isVisible = recipeTimeEditTextIsVisible
+            recipeDifficultyEditText.isVisible = recipeDifficultyEditTextIsVisible
+            saveButton.isVisible = saveButtonIsVisible
+            saveButton.isEnabled = saveButtonIsEnabled
+        }
+    }
+
     private fun showInitialState() {
-        binding.progressBar.isVisible = false
-        binding.errorImageView.isVisible = false
-        binding.errorTextView.isVisible = false
-        binding.successImageView.isVisible = false
-        binding.recipeImageImageView.isVisible = true
-        binding.recipeDetailsCardView.isVisible = true
-        binding.recipeNameEditText.isVisible = true
-        binding.recipeHeadlineEditText.isVisible = true
-        binding.recipeDescriptionEditText.isVisible = true
-        binding.recipeCaloriesEditText.isVisible = true
-        binding.recipeProteinsEditText.isVisible = true
-        binding.recipeFatsEditText.isVisible = true
-        binding.recipeCarbsEditText.isVisible = true
-        binding.recipeTimeEditText.isVisible = true
-        binding.recipeDifficultyEditText.isVisible = true
-        binding.saveButton.isVisible = true
-        binding.saveButton.isEnabled = false
+        setViewsVisibility(
+            recipeImageImageViewIsVisible = true,
+            recipeDetailsCardViewIsVisible = true,
+            recipeNameEditTextIsVisible = true,
+            recipeHeadlineEditTextIsVisible = true,
+            recipeDescriptionEditTextVisibility = true,
+            recipeCaloriesEditTextIsVisible = true,
+            recipeProteinsEditTextIsVisible = true,
+            recipeFatsEditTextIsVisible = true,
+            recipeCarbsEditTextIsVisible = true,
+            recipeTimeEditTextIsVisible = true,
+            recipeDifficultyEditTextIsVisible = true,
+            saveButtonIsVisible = true
+        )
     }
 
     private fun setFieldsChecker() {
@@ -142,44 +179,15 @@ class RecipeAddingFragment : Fragment() {
     }
 
     private fun showLoadingState() {
-        binding.progressBar.isVisible = true
-        binding.errorImageView.isVisible = false
-        binding.errorTextView.isVisible = false
-        binding.successImageView.isVisible = false
-        binding.recipeImageImageView.isVisible = false
-        binding.recipeDetailsCardView.isVisible = false
-        binding.recipeNameEditText.isVisible = false
-        binding.recipeHeadlineEditText.isVisible = false
-        binding.recipeDescriptionEditText.isVisible = false
-        binding.recipeCaloriesEditText.isVisible = false
-        binding.recipeProteinsEditText.isVisible = false
-        binding.recipeFatsEditText.isVisible = false
-        binding.recipeCarbsEditText.isVisible = false
-        binding.recipeTimeEditText.isVisible = false
-        binding.recipeDifficultyEditText.isVisible = false
-        binding.saveButton.isVisible = false
-        binding.saveButton.isEnabled = false
+        setViewsVisibility(progressBarIsVisible = true)
     }
 
     private fun showSuccessState() {
-        binding.progressBar.isVisible = true
-        binding.errorImageView.isVisible = false
-        binding.errorTextView.isVisible = false
-        binding.successImageView.isVisible = true
+        setViewsVisibility(
+            progressBarIsVisible = true,
+            successImageViewVIsVisible = true
+        )
         binding.successImageView.alpha = 0f
-        binding.recipeImageImageView.isVisible = false
-        binding.recipeDetailsCardView.isVisible = false
-        binding.recipeNameEditText.isVisible = false
-        binding.recipeHeadlineEditText.isVisible = false
-        binding.recipeDescriptionEditText.isVisible = false
-        binding.recipeCaloriesEditText.isVisible = false
-        binding.recipeProteinsEditText.isVisible = false
-        binding.recipeFatsEditText.isVisible = false
-        binding.recipeCarbsEditText.isVisible = false
-        binding.recipeTimeEditText.isVisible = false
-        binding.recipeDifficultyEditText.isVisible = false
-        binding.saveButton.isVisible = false
-        binding.saveButton.isEnabled = false
 
         AnimatorSet().apply {
             playSequentially(
@@ -203,23 +211,10 @@ class RecipeAddingFragment : Fragment() {
     }
 
     private fun showErrorState() {
-        binding.progressBar.isVisible = false
-        binding.errorImageView.isVisible = true
-        binding.errorTextView.isVisible = true
-        binding.successImageView.isVisible = false
-        binding.recipeImageImageView.isVisible = false
-        binding.recipeDetailsCardView.isVisible = false
-        binding.recipeNameEditText.isVisible = false
-        binding.recipeHeadlineEditText.isVisible = false
-        binding.recipeDescriptionEditText.isVisible = false
-        binding.recipeCaloriesEditText.isVisible = false
-        binding.recipeProteinsEditText.isVisible = false
-        binding.recipeFatsEditText.isVisible = false
-        binding.recipeCarbsEditText.isVisible = false
-        binding.recipeTimeEditText.isVisible = false
-        binding.recipeDifficultyEditText.isVisible = false
-        binding.saveButton.isVisible = false
-        binding.saveButton.isEnabled = false
+        setViewsVisibility(
+            errorImageViewIsVisible = true,
+            errorTextViewIsVisible = true
+        )
     }
 
     override fun onDestroy() {

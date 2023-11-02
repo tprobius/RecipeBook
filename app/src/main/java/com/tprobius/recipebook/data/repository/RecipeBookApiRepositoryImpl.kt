@@ -1,7 +1,6 @@
 package com.tprobius.recipebook.data.repository
 
 import com.tprobius.recipebook.data.api.RecipeBookApi
-import com.tprobius.recipebook.data.mappers.toRecipeItem
 import com.tprobius.recipebook.data.model.RecipeListItem
 import com.tprobius.recipebook.domain.entities.RecipeItem
 import com.tprobius.recipebook.domain.repository.RecipeBookApiRepository
@@ -15,7 +14,7 @@ class RecipeBookApiRepositoryImpl(
 ) : RecipeBookApiRepository {
     override suspend fun getRecipeList(): List<RecipeItem> {
         lateinit var serverResponse: Response<List<RecipeListItem>>
-        val resultList : MutableList<RecipeItem> = mutableListOf()
+        val resultList: MutableList<RecipeItem> = mutableListOf()
         withContext(dispatcher) {
             serverResponse = recipeBookApi.getRecipeList()
             if (serverResponse.isSuccessful) {

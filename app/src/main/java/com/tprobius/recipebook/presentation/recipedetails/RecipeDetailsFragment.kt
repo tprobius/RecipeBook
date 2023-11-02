@@ -84,38 +84,45 @@ class RecipeDetailsFragment : Fragment() {
         }
     }
 
+    private fun setViewsVisibility(
+        progressBarIsVisible: Boolean = false,
+        errorImageViewIsVisible: Boolean = false,
+        errorTextViewIsVisible: Boolean = false,
+        recipeImageImageViewIsVisible: Boolean = false,
+        recipeInfoCardViewIsVisible: Boolean = false,
+        recipeNameTextViewIsVisible: Boolean = false,
+        recipeHeadlineTextViewIsVisible: Boolean = false,
+        descriptionScrollViewIsVisible: Boolean = false,
+    ) {
+        with(binding) {
+            progressBar.isVisible = progressBarIsVisible
+            errorImageView.isVisible = errorImageViewIsVisible
+            errorTextView.isVisible = errorTextViewIsVisible
+            recipeImageImageView.isVisible = recipeImageImageViewIsVisible
+            recipeInfoCardView.isVisible = recipeInfoCardViewIsVisible
+            recipeNameTextView.isVisible = recipeNameTextViewIsVisible
+            recipeHeadlineTextView.isVisible = recipeHeadlineTextViewIsVisible
+            descriptionScrollView.isVisible = descriptionScrollViewIsVisible
+        }
+    }
+
     private fun showInitialState() {
-        binding.progressBar.isVisible = false
-        binding.errorImageView.isVisible = false
-        binding.errorTextView.isVisible = false
-        binding.recipeImageImageView.isVisible = false
-        binding.recipeInfoCardView.isVisible = false
-        binding.recipeNameTextView.isVisible = false
-        binding.recipeHeadlineTextView.isVisible = false
-        binding.descriptionScrollView.isVisible = false
+        setViewsVisibility()
     }
 
     private fun showLoadingState() {
-        binding.progressBar.isVisible = true
-        binding.errorImageView.isVisible = false
-        binding.errorTextView.isVisible = false
-        binding.recipeImageImageView.isVisible = false
-        binding.recipeInfoCardView.isVisible = false
-        binding.recipeNameTextView.isVisible = false
-        binding.recipeHeadlineTextView.isVisible = false
-        binding.descriptionScrollView.isVisible = false
+        setViewsVisibility(progressBarIsVisible = true)
     }
 
     private fun showSuccessState() {
         setRecipeItem()
-        binding.progressBar.isVisible = false
-        binding.errorImageView.isVisible = false
-        binding.errorTextView.isVisible = false
-        binding.recipeImageImageView.isVisible = true
-        binding.recipeInfoCardView.isVisible = true
-        binding.recipeNameTextView.isVisible = true
-        binding.recipeHeadlineTextView.isVisible = true
-        binding.descriptionScrollView.isVisible = true
+        setViewsVisibility(
+            recipeImageImageViewIsVisible = true,
+            recipeInfoCardViewIsVisible = true,
+            recipeNameTextViewIsVisible = true,
+            recipeHeadlineTextViewIsVisible = true,
+            descriptionScrollViewIsVisible = true,
+        )
     }
 
     private fun setRecipeItem() {
@@ -140,14 +147,10 @@ class RecipeDetailsFragment : Fragment() {
     }
 
     private fun showErrorState() {
-        binding.progressBar.isVisible = false
-        binding.errorImageView.isVisible = true
-        binding.errorTextView.isVisible = true
-        binding.recipeImageImageView.isVisible = false
-        binding.recipeInfoCardView.isVisible = false
-        binding.recipeNameTextView.isVisible = false
-        binding.recipeHeadlineTextView.isVisible = false
-        binding.descriptionScrollView.isVisible = false
+        setViewsVisibility(
+            errorImageViewIsVisible = true,
+            errorTextViewIsVisible = true
+        )
     }
 
     private fun setOnBackClick() {
